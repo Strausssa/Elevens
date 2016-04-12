@@ -30,7 +30,13 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		this.cards = new ArrayList<Card>();
+        for (int i = 0; i < ranks.length; i++) {
+            Card aCard = new Card(ranks[i], suits[i], values[i]);
+            this.cards.add(aCard);
+        }
+        this.size = this.cards.size();
+        shuffle();
 	}
 
 
@@ -39,7 +45,10 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		if (this.cards.size() == 0) {
+            return true;
+        }
+        return false;
 	}
 
 	/**
@@ -47,7 +56,7 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		return this.cards.size();
 	}
 
 	/**
@@ -64,7 +73,11 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		this.size = this.size - 1;
+        if (this.size > 0) {
+            return this.cards.get(this.size);
+        }
+        return null;
 	}
 
 	/**
@@ -75,15 +88,15 @@ public class Deck {
 	public String toString() {
 		String rtn = "size = " + size + "\nUndealt cards: \n";
 
-		for (int k = size - 1; k >= 0; k--) {
-			rtn = rtn + cards.get(k);
-			if (k != 0) {
-				rtn = rtn + ", ";
-			}
-			if ((size - k) % 2 == 0) {
-				// Insert carriage returns so entire deck is visible on console.
-				rtn = rtn + "\n";
-			}
+        for (int k = size - 1; k >= 0; k--) {
+            rtn = rtn + cards.get(k);
+            if (k != 0) {
+                rtn = rtn + ", ";
+            }
+            if ((size - k) % 2 == 0) {
+                // Insert carriage returns so entire deck is visible on console.
+                rtn = rtn + "\n";
+            }
 		}
 
 		rtn = rtn + "\nDealt cards: \n";
