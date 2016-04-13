@@ -31,12 +31,13 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		this.cards = new ArrayList<Card>();
-        for (int i = 0; i < ranks.length; i++) {
-            Card aCard = new Card(ranks[i], suits[i], values[i]);
-            this.cards.add(aCard);
-        }
-        this.size = this.cards.size();
-        shuffle();
+        	for(int i = 0; i < ranks.length; i++) {
+			for(int k = 0; k < suits.length; k++) {
+				this.cards.add(new Card(ranks[i], suits[k], values[i]));
+			}
+		}
+        	this.size = this.cards.size();
+        	shuffle();
 	}
 
 
