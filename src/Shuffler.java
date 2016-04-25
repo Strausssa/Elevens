@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.util.Arrays;
 
 /**
  * This class provides a convenient way to test shuffling methods.
@@ -18,8 +19,8 @@ public class Shuffler {
      * @param args is not used.
      */
     public static void main(String[] args) {
-    	int[] a = {1,1,1,3};
-    	int[] b = {2,1,3,0};
+    	int[] a = {1,2,3};
+    	int[] b = {1,3,2};
     	
     	System.out.println(SHUFFLE_COUNT + " Consecutive Efficient Selection Shuffles:");
         int[] values2 = new int[VALUE_COUNT];
@@ -101,31 +102,31 @@ public class Shuffler {
     }
     
     public static String flip() {
-    	  if (Math.random() > 0.3333) {
-    	    return "head";
-    	  }
-    	  else {
-    	    return "tails";
-    	  }
-    	}
+  	  if (Math.random() > 0.3333) {
+  	    return "head";
+  	  }
+  	  else {
+  	    return "tails";
+  	  }
+  	}
 
-    public static boolean arePermutations(int[] a, int[] b){
-        if (a.length == b.length) {
-        	int test1 = 0;
-        	for(int i = 0; i < a.length; i++){
-                for(int k = 0; k < b.length; k++){
-                    if(a[i] == b[k]){
-                    	test1++;
-                        if(test1 == ((a.length - 1) * 2)){
-                        	return true;
-                        }
-                    }
-                }
-
-            }
-          
-        }
-        return false;
+    public static boolean arePermutations(int a[], int b[]){
+    	if(a.length == b.length) {
+			int vCount = 0;
+			Arrays.sort(a);
+			Arrays.sort(b);
+			for(int i = 0; i < a.length; i++) {
+				if(a[i] == b[i]) {
+					vCount++;
+					if(vCount == a.length) {
+						return true;
+					}
+				}
+			}
+		}
+    	
+    	
+		return false;
         		
     }
 }
