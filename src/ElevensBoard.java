@@ -116,7 +116,7 @@ public class ElevensBoard {
 	public Card cardAt(int k) {
 		return cards[k];
 	}
-
+	
 	/**
 	 * Replaces selected cards on the board by dealing new cards.
 	 * @param selectedCards is a list of the indices of the
@@ -231,5 +231,12 @@ public class ElevensBoard {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+	}
+	
+	public static void printCards(ElevensBoard board) {
+		List<Integer> cIndexes = board.cardIndexes();  
+		for (int i : cIndexes) {
+			System.out.println((board.cardAt(i).toString()));
+		}
 	}
 }
